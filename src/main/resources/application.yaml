@@ -1,0 +1,27 @@
+spring:
+  graphql:
+    graphiql:
+      path: /graphiql
+      enabled: 'true'
+
+  datasource:
+    username: user
+    url: jdbc:h2:mem:persistence
+    driverClassName: org.h2.Driver
+    password: pass
+
+  h2:
+    console:
+      enabled: 'true'
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: 'true'
+
+
+  # Error Swagger page can not be displayed. Need to add pathmatch in mv
+  # This issue is caused by Spring Fox 3.0.0 not supporting new PathPattern Based Path Matching Strategy
+  # for Spring MVC which is now the new default from spring-boot 2.6.0.
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
